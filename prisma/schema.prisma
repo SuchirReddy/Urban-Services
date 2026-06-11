@@ -1,0 +1,112 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  name      String
+  email     String    @unique
+  phone     String
+  addresses Address[]
+  bookings  Booking[]
+  reviews   Review[]
+}
+
+model Professional {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  phone         String
+  avatar        String?
+  rating        Float     @default(0)
+  jobCount      Int       @default(0)
+  services      Service[]
+  serviceAreas  String    // Changed from String[] for SQLite
+  isOnline      Boolean   @default(false)
+  isVerified    Boolean   @default(false)
+  documents     Document[]
+  bookings      Booking[]
+}
+
+model Service {
+  id          String        @id @default(cuid())
+  name        String
+  category    String
+  description String
+  price       Float
+  duration    Int           // minutes
+  imageUrl    String
+  addOns      AddOn[]
+  professionals Professional[]
+  bookings    Booking[]
+}
+
+model AddOn {
+  id        String  @id @default(cuid())
+  name      String
+  price     Float
+  serviceId String
+  service   Service @relation(fields: [serviceId], references: [id])
+}
+
+model Booking {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+  professionalId  String?
+  professional    Professional? @relation(fields: [professionalId], references: [id])
+  serviceId       String
+  service         Service   @relation(fields: [serviceId], references: [id])
+  address         String
+  date            DateTime
+  timeSlot        String
+  status          String    @default("PENDING") // Changed from Status enum for SQLite
+  total           Float
+  commission      Float?
+  addOns          String?   // Changed from Json? for SQLite
+  review          Review?
+  createdAt       DateTime  @default(now())
+}
+
+model Review {
+  id         String  @id @default(cuid())
+  userId     String
+  user       User    @relation(fields: [userId], references: [id])
+  bookingId  String  @unique
+  booking    Booking @relation(fields: [bookingId], references: [id])
+  rating     Int
+  comment    String?
+  createdAt  DateTime @default(now())
+}
+
+model ChatMessage {
+  id             String     @id @default(cuid())
+  bookingId      String
+  senderId       String
+  senderType     String     // Changed from SenderType enum for SQLite
+  content        String
+  timestamp      DateTime   @default(now())
+}
+
+model Address {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+  label  String
+  full   String
+  lat    Float
+  lng    Float
+}
+
+model Document {
+  id             String       @id @default(cuid())
+  professionalId String
+  professional   Professional @relation(fields: [professionalId], references: [id])
+  type           String
+  url            String
+}
