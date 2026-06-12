@@ -140,35 +140,35 @@ export default function ServiceDetailPage() {
 
         {/* Right Sticky Cart */}
         <div>
-          <Card className="sticky top-24 border-2 border-indigo-50 shadow-xl rounded-3xl overflow-hidden">
-            <CardContent className="p-8">
-              <h3 className="text-xl font-bold mb-6">Booking Summary</h3>
+          <Card className="sticky top-24 border border-slate-100 shadow-2xl shadow-slate-200/50 rounded-[2rem] overflow-hidden bg-white">
+            <CardContent className="p-8 md:p-10">
+              <h3 className="text-xs font-bold text-slate-400 tracking-widest uppercase mb-8">Booking Summary</h3>
               
-              <div className="flex justify-between items-end mb-6">
+              <div className="flex justify-between items-end mb-8">
                 <div>
-                  <div className="text-sm text-slate-500 font-medium">Base Price</div>
-                  <div className="text-3xl font-bold text-slate-900 mt-1">₹{service.price}</div>
+                  <div className="text-xs font-bold text-slate-400 tracking-widest uppercase mb-2">Base Price</div>
+                  <div className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tighter">₹{service.price}</div>
                 </div>
               </div>
 
               {service.addOns?.length > 0 && (
                 <>
-                  <Separator className="my-6" />
-                  <div className="mb-4 font-bold text-sm text-slate-900">Optional Add-ons</div>
-                  <div className="space-y-4">
+                  <Separator className="my-8 bg-slate-100" />
+                  <div className="mb-6 font-bold text-xs text-slate-400 tracking-widest uppercase">Optional Add-ons</div>
+                  <div className="space-y-5">
                     {service.addOns.map((addon: any) => (
-                      <div key={addon.id} className="flex items-start space-x-3">
+                      <div key={addon.id} className="flex items-start space-x-4 group cursor-pointer" onClick={() => handleAddOnToggle(addon.id, addon.price)}>
                         <Checkbox 
                           id={addon.id} 
                           checked={!!selectedAddOns[addon.id]}
                           onCheckedChange={() => handleAddOnToggle(addon.id, addon.price)}
-                          className="mt-1"
+                          className="mt-0.5 w-5 h-5 border-slate-300 data-[state=checked]:bg-black data-[state=checked]:border-black rounded-[4px] transition-all"
                         />
                         <div className="flex-1">
-                          <label htmlFor={addon.id} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer">
+                          <label className="text-sm font-bold text-slate-700 leading-none group-hover:text-black transition-colors cursor-pointer">
                             {addon.name}
                           </label>
-                          <p className="text-sm text-slate-500 mt-1">+₹{addon.price}</p>
+                          <p className="text-sm text-slate-500 mt-1 font-medium">+₹{addon.price}</p>
                         </div>
                       </div>
                     ))}
@@ -176,14 +176,14 @@ export default function ServiceDetailPage() {
                 </>
               )}
 
-              <Separator className="my-6" />
+              <Separator className="my-8 bg-slate-100" />
               
-              <div className="flex justify-between items-center mb-8">
-                <span className="font-bold text-lg">Total</span>
-                <span className="font-bold text-2xl text-slate-900">₹{calculateTotal()}</span>
+              <div className="flex justify-between items-center mb-10">
+                <span className="font-bold text-slate-900 uppercase tracking-widest text-xs">Total</span>
+                <span className="font-bold text-3xl text-black tracking-tighter">₹{calculateTotal()}</span>
               </div>
 
-              <Button onClick={handleProceed} size="lg" className="w-full text-base font-bold rounded-full py-6">
+              <Button onClick={handleProceed} size="lg" className="w-full text-base font-bold rounded-full h-14 bg-black text-white hover:bg-slate-800 transition-all hover:shadow-xl hover:shadow-slate-200 hover:-translate-y-0.5">
                 Proceed to Book
               </Button>
             </CardContent>

@@ -45,7 +45,7 @@ export default function MobileNav() {
               onClick={() => setIsOpen(false)}
               className={`flex items-center gap-3 px-4 py-3 rounded-2xl transition-colors ${
                 isActive(item.path) 
-                  ? 'bg-indigo-600/20 text-indigo-400' 
+                  ? 'bg-white/10 text-white font-semibold' 
                   : 'text-slate-300 hover:bg-slate-800 hover:text-white'
               }`}
             >
@@ -60,7 +60,7 @@ export default function MobileNav() {
               onClick={() => setIsOpen(false)}
               className={`flex items-center gap-3 px-4 py-3 rounded-2xl transition-colors ${
                 isActive('/admin') 
-                  ? 'bg-indigo-600/20 text-indigo-400' 
+                  ? 'bg-white/10 text-white font-semibold' 
                   : 'text-slate-300 hover:bg-slate-800 hover:text-white'
               }`}
             >
@@ -73,7 +73,7 @@ export default function MobileNav() {
               onClick={() => setIsOpen(false)}
               className={`flex items-center gap-3 px-4 py-3 rounded-2xl transition-colors ${
                 isActive('/professional') 
-                  ? 'bg-indigo-600/20 text-indigo-400' 
+                  ? 'bg-white/10 text-white font-semibold' 
                   : 'text-slate-300 hover:bg-slate-800 hover:text-white'
               }`}
             >
@@ -86,7 +86,7 @@ export default function MobileNav() {
         {/* FAB */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-14 h-14 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-[0_8px_30px_rgb(79,70,229,0.4)] flex items-center justify-center transition-transform active:scale-95"
+          className="w-14 h-14 bg-black hover:bg-slate-800 text-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.3)] flex items-center justify-center transition-transform active:scale-95"
           aria-label="Toggle Navigation Menu"
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

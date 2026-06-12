@@ -15,30 +15,28 @@ export default function ProfessionalLayout({ children }: { children: React.React
   ];
 
   return (
-    <div className="bg-slate-50 min-h-screen">
+    <div className="bg-slate-50 min-h-screen pt-4">
       <NotificationListener />
       
-      <div className="bg-white border-b border-slate-200 sticky top-16 z-40">
-        <div className="max-w-6xl mx-auto px-4">
-          <nav className="flex space-x-8 overflow-x-auto no-scrollbar">
-            {tabs.map((tab) => {
-              const isActive = pathname === tab.path;
-              return (
-                <Link
-                  key={tab.path}
-                  href={tab.path}
-                  className={`py-4 px-1 text-sm font-semibold border-b-2 whitespace-nowrap ${
-                    isActive 
-                      ? 'border-indigo-600 text-indigo-600' 
-                      : 'border-transparent text-slate-500 hover:text-slate-800 hover:border-slate-300'
-                  }`}
-                >
-                  {tab.name}
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
+      <div className="flex justify-center mb-4 px-4">
+        <nav className="bg-white border border-slate-200 shadow-sm rounded-full p-1 flex items-center overflow-x-auto no-scrollbar max-w-full">
+          {tabs.map((tab) => {
+            const isActive = pathname === tab.path;
+            return (
+              <Link
+                key={tab.path}
+                href={tab.path}
+                className={`py-2.5 px-6 text-sm font-bold rounded-full whitespace-nowrap transition-all ${
+                  isActive 
+                    ? 'bg-black text-white shadow-md' 
+                    : 'bg-transparent text-slate-500 hover:text-slate-900 hover:bg-slate-100'
+                }`}
+              >
+                {tab.name}
+              </Link>
+            );
+          })}
+        </nav>
       </div>
 
       <div className="max-w-6xl mx-auto px-4 py-8">

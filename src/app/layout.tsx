@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Toaster } from 'sonner';
 import { DemoRoleProvider } from '@/contexts/DemoRoleContext';
 import AppHeader from '@/components/AppHeader';
@@ -14,7 +15,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'UrbanGlow | Premium Home Services',
+  title: 'Urbio | Premium Home Services',
   description: 'Your one-stop destination for premium home services and professionals.',
 };
 
@@ -41,7 +42,9 @@ export default function RootLayout({
         <footer className="bg-black border-t border-slate-800 mt-auto text-white">
           <div className="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-1">
-              <span className="text-2xl font-bold text-white">UrbanGlow</span>
+              <div className="flex items-center gap-2">
+                <Image src="/logo_transparent.png" alt="Urbio Logo" width={64} height={64} className="rounded-sm object-cover object-center invert" />
+              </div>
               <p className="mt-4 text-sm text-slate-400">Premium home services at your fingertips. Guaranteed quality, every time.</p>
             </div>
             
@@ -49,7 +52,7 @@ export default function RootLayout({
               <h4 className="font-bold text-white mb-4">Customers</h4>
               <ul className="space-y-2 text-sm text-slate-400">
                 <li><Link href="#" className="hover:text-white transition-colors">Book a Service</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">UrbanGlow Guarantee</Link></li>
+                <li><Link href="#" className="hover:text-white transition-colors">Urbio Guarantee</Link></li>
                 <li><Link href="#" className="hover:text-white transition-colors">Help & Support</Link></li>
               </ul>
             </div>
@@ -73,7 +76,7 @@ export default function RootLayout({
             </div>
           </div>
           <div className="max-w-6xl mx-auto px-4 py-6 border-t border-slate-800 text-center">
-            <p className="text-sm text-slate-500">© 2026 UrbanGlow. All rights reserved.</p>
+            <p className="text-sm text-slate-500">© 2026 Urbio. All rights reserved.</p>
           </div>
         </footer>
         </DemoRoleProvider>

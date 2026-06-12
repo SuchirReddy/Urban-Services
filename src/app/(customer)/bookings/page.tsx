@@ -50,7 +50,7 @@ export default function CustomerBookingsPage() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <Loader2 className="w-8 h-8 animate-spin text-indigo-500" />
+        <Loader2 className="w-8 h-8 animate-spin text-slate-900" />
       </div>
     );
   }
@@ -72,53 +72,47 @@ export default function CustomerBookingsPage() {
             const hasReviewed = !!booking.review;
             
             return (
-              <Card key={booking.id} className="overflow-hidden hover:shadow-md transition-shadow">
-                <div className="bg-slate-50 border-b p-4 flex flex-wrap gap-4 items-center justify-between">
+              <Card key={booking.id} className="overflow-hidden border border-slate-100 shadow-xl rounded-3xl hover:shadow-2xl transition-all">
+                <div className="px-6 py-5 border-b border-slate-100 flex flex-wrap gap-4 items-center justify-between bg-white">
                   <div className="flex items-center gap-4">
                     <div className="text-sm">
-                      <span className="text-slate-500 block">Booking ID</span>
-                      <span className="font-mono font-medium">#{booking.id.slice(-8).toUpperCase()}</span>
+                      <span className="text-slate-400 font-bold uppercase tracking-wider text-xs block mb-0.5">Booking ID</span>
+                      <span className="font-bold text-slate-900">#{booking.id.slice(-8).toUpperCase()}</span>
                     </div>
                     <div className="hidden sm:block w-px h-8 bg-slate-200"></div>
                     <div className="text-sm">
-                      <span className="text-slate-500 block">Total Amount</span>
-                      <span className="font-medium">₹{booking.total}</span>
+                      <span className="text-slate-400 font-bold uppercase tracking-wider text-xs block mb-0.5">Total Amount</span>
+                      <span className="font-bold text-slate-900">₹{booking.total}</span>
                     </div>
                   </div>
-                  <Badge 
-                    className={
-                      isCompleted 
-                        ? 'bg-slate-200 text-slate-700 hover:bg-slate-300' 
-                        : 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200'
-                    }
-                  >
-                    {booking.status}
-                  </Badge>
+                  <div className="bg-black text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+                    {booking.status.replace(/_/g, ' ')}
+                  </div>
                 </div>
                 
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row justify-between gap-6">
                     <div className="space-y-4">
-                      <h3 className="text-xl font-bold">{booking.service?.name}</h3>
+                      <h3 className="text-2xl font-bold text-slate-900">{booking.service?.name}</h3>
                       
-                      <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600">
-                        <div className="flex items-center gap-2">
-                          <Calendar className="w-4 h-4 text-indigo-500" />
-                          {new Date(booking.date).toLocaleDateString()}
+                      <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-700 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                        <div className="flex items-center gap-2 font-medium">
+                          <Calendar className="w-4 h-4 text-slate-900 shrink-0" />
+                          {new Date(booking.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                         </div>
-                        <div className="flex items-center gap-2">
-                          <Clock className="w-4 h-4 text-indigo-500" />
+                        <div className="flex items-center gap-2 font-medium">
+                          <Clock className="w-4 h-4 text-slate-900 shrink-0" />
                           {booking.timeSlot}
                         </div>
-                        <div className="flex items-center gap-2">
-                          <MapPin className="w-4 h-4 text-indigo-500" />
-                          <span className="line-clamp-1 max-w-[200px]">{booking.address}</span>
+                        <div className="flex items-center gap-2 font-medium">
+                          <MapPin className="w-4 h-4 text-slate-900 shrink-0" />
+                          <span className="line-clamp-1">{booking.address}</span>
                         </div>
                       </div>
 
                       {booking.professional && (
-                        <div className="flex items-center gap-3 pt-4 border-t mt-4">
-                          <div className="w-10 h-10 bg-slate-200 rounded-full overflow-hidden flex items-center justify-center font-bold text-slate-400">
+                        <div className="flex items-center gap-4 pt-2">
+                          <div className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center font-bold text-slate-900 text-xl shadow-sm border border-slate-100 overflow-hidden">
                             {booking.professional.avatar ? (
                               <img src={booking.professional.avatar} alt="Pro" className="w-full h-full object-cover" />
                             ) : (
@@ -126,18 +120,18 @@ export default function CustomerBookingsPage() {
                             )}
                           </div>
                           <div>
-                            <p className="text-sm text-slate-500">Assigned Professional</p>
-                            <p className="font-semibold">{booking.professional.name}</p>
+                            <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-0.5">Assigned Professional</p>
+                            <p className="font-bold text-slate-900">{booking.professional.name}</p>
                           </div>
                         </div>
                       )}
                     </div>
                     
-                    <div className="flex flex-col gap-3 justify-center min-w-[140px]">
+                    <div className="flex flex-col gap-3 justify-center min-w-[160px]">
                       {!isCompleted ? (
                         <>
                           <Button 
-                            className="w-full rounded-full" 
+                            className="w-full h-12 rounded-full font-bold bg-black text-white hover:bg-slate-800 shadow-md transition-all" 
                             onClick={() => router.push(`/tracking/${booking.id}`)}
                           >
                             Track Order
@@ -145,16 +139,16 @@ export default function CustomerBookingsPage() {
                         </>
                       ) : (
                         <>
-                          <Button variant="outline" className="w-full rounded-full" onClick={() => router.push(`/services/${booking.serviceId}`)}>
+                          <Button variant="outline" className="w-full h-12 rounded-full font-bold border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors" onClick={() => router.push(`/services/${booking.serviceId}`)}>
                             Book Again
                           </Button>
                           {!hasReviewed ? (
-                            <Button variant="secondary" className="w-full rounded-full" onClick={() => openReviewModal(booking)}>
+                            <Button variant="outline" className="w-full h-12 rounded-full font-bold border-slate-200 text-slate-900 hover:bg-slate-50 transition-all shadow-sm" onClick={() => openReviewModal(booking)}>
                               <Star className="w-4 h-4 mr-2" /> Rate Service
                             </Button>
                           ) : (
-                            <div className="text-sm font-medium text-amber-600 flex items-center justify-center gap-1 bg-amber-50 py-2 rounded-full">
-                              <Star className="w-4 h-4 fill-current" /> Reviewed
+                            <div className="text-sm font-bold text-slate-900 flex items-center justify-center gap-2 bg-slate-50 border border-slate-200 h-12 rounded-full">
+                              <Star className="w-4 h-4 fill-slate-900" /> Reviewed
                             </div>
                           )}
                         </>

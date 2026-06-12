@@ -52,21 +52,21 @@ export default function ReviewModal({ isOpen, onOpenChange, bookingId, professio
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>Rate your service</DialogTitle>
-          <DialogDescription>
-            How was your experience with {professionalName || 'the professional'}?
+      <DialogContent className="sm:max-w-md rounded-[2rem] border-none shadow-2xl p-8 gap-8">
+        <DialogHeader className="space-y-3">
+          <DialogTitle className="text-3xl font-bold text-center text-slate-900">Rate your service</DialogTitle>
+          <DialogDescription className="text-center text-slate-500 text-base">
+            How was your experience with <span className="font-bold text-slate-900">{professionalName || 'the professional'}</span>?
           </DialogDescription>
         </DialogHeader>
         
-        <div className="py-6 flex flex-col items-center gap-6">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-col items-center gap-6">
+          <div className="flex items-center gap-3 bg-slate-50 py-4 px-8 rounded-full border border-slate-100 shadow-inner">
             {[1, 2, 3, 4, 5].map((star) => (
               <button
                 key={star}
                 type="button"
-                className="focus:outline-none transition-transform hover:scale-110"
+                className="focus:outline-none transition-all hover:scale-110 active:scale-95"
                 onMouseEnter={() => setHoverRating(star)}
                 onMouseLeave={() => setHoverRating(0)}
                 onClick={() => setRating(star)}
@@ -74,9 +74,9 @@ export default function ReviewModal({ isOpen, onOpenChange, bookingId, professio
                 <Star 
                   className={`w-10 h-10 ${
                     (hoverRating || rating) >= star 
-                      ? 'fill-amber-400 text-amber-400' 
-                      : 'text-slate-200'
-                  } transition-colors`} 
+                      ? 'fill-black text-black drop-shadow-sm' 
+                      : 'text-slate-200 hover:text-slate-300'
+                  } transition-all duration-200`} 
                 />
               </button>
             ))}
@@ -86,17 +86,17 @@ export default function ReviewModal({ isOpen, onOpenChange, bookingId, professio
             placeholder="Tell us what you liked or how we can improve..."
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            className="w-full min-h-[100px]"
+            className="w-full min-h-[120px] rounded-2xl border-slate-200 focus-visible:ring-black bg-slate-50/50 p-4 text-base resize-none"
           />
         </div>
 
-        <DialogFooter>
+        <DialogFooter className="sm:justify-center">
           <Button 
             onClick={handleSubmit} 
             disabled={!rating || isSubmitting}
-            className="w-full bg-indigo-600 hover:bg-indigo-700"
+            className="w-full rounded-full h-14 text-base font-bold bg-black text-white hover:bg-slate-800 shadow-lg transition-all active:scale-[0.98]"
           >
-            {isSubmitting ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Submitting...</> : 'Submit Review'}
+            {isSubmitting ? <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Submitting...</> : 'Submit Review'}
           </Button>
         </DialogFooter>
       </DialogContent>

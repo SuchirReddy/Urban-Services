@@ -116,67 +116,71 @@ export default function ActiveJobPage() {
     }
   };
 
-  if (loading) return <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 animate-spin text-indigo-500" /></div>;
+  if (loading) return <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 animate-spin text-slate-900" /></div>;
   if (!job) return <div className="text-center py-20">Job not found</div>;
 
   const isCompleted = job.status === 'COMPLETED';
 
   return (
-    <div className="max-w-6xl mx-auto px-4">
-      <Button variant="ghost" onClick={() => router.push('/professional')} className="mb-6 -ml-4">
-        <ArrowLeft className="w-4 h-4 mr-2" /> Back to Dashboard
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      <Button variant="ghost" onClick={() => router.push('/professional')} className="mb-8 hover:bg-slate-100 rounded-full pr-6 font-bold text-slate-600 hover:text-black transition-colors">
+        <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
       </Button>
 
-      <div className="flex flex-col lg:flex-row gap-8">
+      <div className="flex flex-col lg:flex-row gap-10">
         {/* Left Column: Job Details & Map */}
-        <div className="flex-1 space-y-6">
+        <div className="flex-1 space-y-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold mb-2">Job Details</h1>
-              <p className="text-slate-500 font-mono text-sm">#{job.id.slice(-8).toUpperCase()}</p>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-3">Job Details.</h1>
+              <p className="text-xs font-bold text-slate-400 tracking-widest uppercase">ID #{job.id.slice(-8).toUpperCase()}</p>
             </div>
-            <Badge className="text-base py-1 px-4">{job.status}</Badge>
+            <span className="text-xs font-bold text-white bg-black px-4 py-2 rounded-full uppercase tracking-widest shadow-md">
+              {job.status.replace(/_/g, ' ')}
+            </span>
           </div>
 
-          <Card>
-            <CardContent className="p-6">
-              <div className="mb-6">
-                <h2 className="text-xl font-bold">{job.service?.name}</h2>
-                <p className="text-slate-500 mt-1">Customer: <span className="font-semibold text-slate-800">{job.user?.name || 'Customer'}</span></p>
+          <Card className="border border-slate-100 shadow-2xl shadow-slate-200/50 rounded-[2rem] overflow-hidden bg-white">
+            <CardContent className="p-8 md:p-10 space-y-8">
+              <div>
+                <h2 className="text-2xl font-bold text-slate-900 tracking-tight">{job.service?.name}</h2>
+                <p className="text-sm font-bold text-slate-400 mt-2 uppercase tracking-wider">Customer: <span className="text-slate-900">{job.user?.name || 'Customer'}</span></p>
               </div>
 
-              <div className="bg-slate-50 p-4 rounded-xl mb-6">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-indigo-500 shrink-0 mt-0.5" />
+              <div className="bg-slate-50 p-6 rounded-[1.5rem] border border-slate-100">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-slate-100 shrink-0">
+                    <MapPin className="w-5 h-5 text-black" />
+                  </div>
                   <div>
-                    <p className="font-semibold text-slate-900 mb-1">Service Address</p>
-                    <p className="text-slate-600 text-sm leading-relaxed">{job.address}</p>
+                    <p className="text-xs font-bold text-slate-400 tracking-widest uppercase mb-1">Service Address</p>
+                    <p className="font-medium text-slate-700 leading-relaxed text-sm">{job.address}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="mb-6">
+              <div className="rounded-[1.5rem] overflow-hidden border border-slate-100 shadow-sm">
                 <TrackingMap customerLocation={customerLoc} proLocation={proLoc} />
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button 
                   variant="outline" 
-                  className="flex-1 py-6 font-bold text-indigo-600 border-indigo-200 hover:bg-indigo-50"
+                  className="flex-1 h-14 rounded-full font-bold text-base text-slate-900 border-slate-200 hover:bg-slate-50 transition-all hover:border-black"
                   onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&destination=${customerLoc.lat},${customerLoc.lng}`, '_blank')}
                 >
-                  <Navigation className="w-4 h-4 mr-2" /> Get Directions
+                  <Navigation className="w-5 h-5 mr-3" /> Get Directions
                 </Button>
                 
                 {!isCompleted && (
                   <Button 
-                    className="flex-1 py-6 font-bold"
+                    className="flex-1 h-14 rounded-full font-bold text-base bg-black text-white hover:bg-slate-800 shadow-lg shadow-black/10 transition-all hover:-translate-y-0.5"
                     onClick={() => updateStatus(job.status === 'ACCEPTED' ? 'IN_PROGRESS' : 'COMPLETED')}
                     disabled={updatingStatus}
                   >
-                    {updatingStatus ? <Loader2 className="w-4 h-4 animate-spin" /> : 
+                    {updatingStatus ? <Loader2 className="w-5 h-5 animate-spin" /> : 
                      job.status === 'ACCEPTED' ? 'Start Job' : 
-                     <><CheckCircle2 className="w-4 h-4 mr-2" /> Complete Job</>}
+                     <><CheckCircle2 className="w-5 h-5 mr-3" /> Complete Job</>}
                   </Button>
                 )}
               </div>
@@ -185,23 +189,29 @@ export default function ActiveJobPage() {
         </div>
 
         {/* Right Column: Chat */}
-        <div className="lg:w-[400px] flex flex-col h-[600px] lg:h-[800px]">
-          <Card className="flex-1 flex flex-col overflow-hidden border-2 shadow-sm">
-            <div className="bg-slate-900 text-white p-4">
-              <h3 className="font-bold flex items-center gap-2">
-                <MessageSquare className="w-5 h-5" /> Chat with {job.user?.name?.split(' ')[0] || 'Customer'}
-              </h3>
+        <div className="lg:w-[450px] flex flex-col h-[600px] lg:h-[800px]">
+          <Card className="flex-1 flex flex-col overflow-hidden border border-slate-100 shadow-2xl shadow-slate-200/50 rounded-[2rem] bg-white">
+            <div className="bg-slate-50 border-b border-slate-100 p-6 flex items-center justify-between shrink-0">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-slate-100">
+                  <MessageSquare className="w-5 h-5 text-black" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 text-lg leading-none tracking-tight">{job.user?.name?.split(' ')[0] || 'Customer'}</h3>
+                  <p className="text-[10px] font-bold text-slate-400 mt-1.5 uppercase tracking-widest">Customer Support</p>
+                </div>
+              </div>
             </div>
             
-            <div className="flex-1 p-4 overflow-y-auto bg-slate-50 space-y-4">
+            <div className="flex-1 p-6 overflow-y-auto space-y-6">
               {messages.length === 0 ? (
-                <div className="text-center text-slate-400 text-sm mt-10">No messages yet.</div>
+                <div className="text-center text-slate-400 text-sm font-medium mt-10">No messages yet.</div>
               ) : (
                 messages.map((msg, idx) => {
                   const isPro = msg.senderType === 'PROFESSIONAL';
                   return (
                     <div key={msg.id || idx} className={`flex ${isPro ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`max-w-[80%] rounded-2xl px-4 py-2 text-sm ${isPro ? 'bg-indigo-600 text-white rounded-br-sm' : 'bg-white border border-slate-200 text-slate-800 rounded-bl-sm'}`}>
+                      <div className={`max-w-[85%] rounded-3xl px-6 py-4 text-sm font-medium leading-relaxed shadow-sm ${isPro ? 'bg-black text-white rounded-br-md' : 'bg-slate-50 border border-slate-100 text-slate-900 rounded-bl-md'}`}>
                         {msg.content}
                       </div>
                     </div>
@@ -211,17 +221,17 @@ export default function ActiveJobPage() {
               <div ref={messagesEndRef} />
             </div>
 
-            <div className="p-4 bg-white border-t">
-              <form onSubmit={handleSendMessage} className="flex gap-2">
+            <div className="p-5 bg-white border-t border-slate-100 shrink-0">
+              <form onSubmit={handleSendMessage} className="flex gap-3">
                 <Input 
                   value={newMessage} 
                   onChange={e => setNewMessage(e.target.value)}
                   placeholder="Message customer..."
-                  className="rounded-full"
+                  className="rounded-full h-14 bg-slate-50 border-transparent focus-visible:ring-1 focus-visible:ring-black px-6 shadow-none text-base font-medium"
                   disabled={isCompleted}
                 />
-                <Button type="submit" size="icon" className="rounded-full shrink-0" disabled={isCompleted}>
-                  <Send className="w-4 h-4" />
+                <Button type="submit" size="icon" className="w-14 h-14 rounded-full shrink-0 bg-black hover:bg-slate-800 text-white shadow-lg transition-all hover:-translate-y-0.5" disabled={isCompleted}>
+                  <Send className="w-5 h-5" />
                 </Button>
               </form>
             </div>

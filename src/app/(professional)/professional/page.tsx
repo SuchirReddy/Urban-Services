@@ -92,84 +92,84 @@ export default function ProfessionalDashboard() {
   };
 
   if (loading) {
-    return <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 animate-spin text-indigo-500" /></div>;
+    return <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 animate-spin text-slate-900" /></div>;
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-12 pb-12">
       {/* Header Area */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div>
-          <h1 className="text-3xl font-bold">Welcome back, {selectedUserName?.split(' ')[0]}!</h1>
-          <p className="text-slate-500 mt-1">{new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">Welcome back, {selectedUserName?.split(' ')[0]}.</h1>
+          <p className="text-slate-500 mt-3 text-lg font-light">{new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</p>
         </div>
         
-        <div className="flex items-center gap-3 bg-white p-2 pr-6 pl-2 rounded-full border shadow-sm">
+        <div className="flex items-center gap-4 bg-white p-2.5 pr-8 pl-3 rounded-full shadow-sm border border-slate-100">
           <button 
             onClick={toggleOnline}
-            className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors focus:outline-none ${isOnline ? 'bg-emerald-500' : 'bg-slate-300'}`}
+            className={`relative inline-flex h-10 w-16 items-center rounded-full transition-colors focus:outline-none ${isOnline ? 'bg-black' : 'bg-slate-200'}`}
           >
-            <span className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${isOnline ? 'translate-x-7' : 'translate-x-1'}`} />
+            <span className={`inline-block h-8 w-8 transform rounded-full bg-white transition-transform shadow-sm ${isOnline ? 'translate-x-7' : 'translate-x-1'}`} />
           </button>
-          <span className="font-semibold text-sm">
-            {isOnline ? <span className="text-emerald-600">Online & Accepting Jobs</span> : <span className="text-slate-500">Offline</span>}
+          <span className="font-bold text-xs uppercase tracking-widest text-slate-700">
+            {isOnline ? 'Online' : 'Offline'}
           </span>
         </div>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="border-none shadow-sm bg-white">
-          <CardContent className="p-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <Card className="border border-slate-100 shadow-sm rounded-3xl bg-white">
+          <CardContent className="p-8">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-500">Today's Jobs</p>
-                <h3 className="text-3xl font-bold mt-1">{stats.todayJobs}</h3>
+                <p className="text-xs font-bold text-slate-400 tracking-widest uppercase">Today's Jobs</p>
+                <h3 className="text-4xl font-bold mt-2 tracking-tighter text-slate-900">{stats.todayJobs}</h3>
               </div>
-              <div className="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center text-indigo-600">
-                <Briefcase className="w-6 h-6" />
+              <div className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-black border border-slate-100">
+                <Briefcase className="w-5 h-5" />
               </div>
             </div>
           </CardContent>
         </Card>
         
-        <Card className="border-none shadow-sm bg-white">
-          <CardContent className="p-6">
+        <Card className="border border-slate-100 shadow-sm rounded-3xl bg-white">
+          <CardContent className="p-8">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-500">Earnings Today</p>
-                <h3 className="text-3xl font-bold mt-1 text-emerald-600">₹{stats.earningsToday}</h3>
+                <p className="text-xs font-bold text-slate-400 tracking-widest uppercase">Earnings Today</p>
+                <h3 className="text-4xl font-bold mt-2 tracking-tighter text-slate-900">₹{stats.earningsToday}</h3>
               </div>
-              <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600">
-                <IndianRupee className="w-6 h-6" />
+              <div className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-black border border-slate-100">
+                <IndianRupee className="w-5 h-5" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-none shadow-sm bg-white">
-          <CardContent className="p-6">
+        <Card className="border border-slate-100 shadow-sm rounded-3xl bg-white">
+          <CardContent className="p-8">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-500">Overall Rating</p>
-                <h3 className="text-3xl font-bold mt-1">{stats.rating.toFixed(1)}</h3>
+                <p className="text-xs font-bold text-slate-400 tracking-widest uppercase">Overall Rating</p>
+                <h3 className="text-4xl font-bold mt-2 tracking-tighter text-slate-900">{stats.rating.toFixed(1)}</h3>
               </div>
-              <div className="w-12 h-12 bg-amber-50 rounded-full flex items-center justify-center text-amber-500">
-                <Star className="w-6 h-6 fill-current" />
+              <div className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-black border border-slate-100">
+                <Star className="w-5 h-5 fill-current" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-none shadow-sm bg-white">
-          <CardContent className="p-6">
+        <Card className="border border-slate-100 shadow-sm rounded-3xl bg-white">
+          <CardContent className="p-8">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-500">All Time Jobs</p>
-                <h3 className="text-3xl font-bold mt-1">{stats.allTimeJobs}</h3>
+                <p className="text-xs font-bold text-slate-400 tracking-widest uppercase">All Time Jobs</p>
+                <h3 className="text-4xl font-bold mt-2 tracking-tighter text-slate-900">{stats.allTimeJobs}</h3>
               </div>
-              <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
-                <Briefcase className="w-6 h-6" />
+              <div className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-black border border-slate-100">
+                <Briefcase className="w-5 h-5" />
               </div>
             </div>
           </CardContent>
@@ -177,39 +177,39 @@ export default function ProfessionalDashboard() {
       </div>
 
       {/* Active Jobs Section */}
-      <h2 className="text-2xl font-bold pt-4">Active Jobs</h2>
+      <h2 className="text-xs font-bold text-slate-400 tracking-widest uppercase pt-8">Active Jobs</h2>
       {activeJobs.length === 0 ? (
-        <Card className="border-dashed border-2 bg-transparent shadow-none">
-          <CardContent className="py-12 text-center text-slate-500">
-            No active jobs at the moment. Toggle online to receive new requests!
+        <Card className="border-dashed border-2 border-slate-200 bg-slate-50/50 shadow-none rounded-[2rem]">
+          <CardContent className="py-20 text-center text-slate-500 font-medium">
+            No active jobs at the moment. Toggle online to receive new requests.
           </CardContent>
         </Card>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {activeJobs.map(job => (
-            <Card key={job.id} className="overflow-hidden border-2 border-indigo-50">
-              <div className="bg-indigo-50 px-6 py-3 border-b flex justify-between items-center">
-                <span className="font-bold text-indigo-900">{job.service?.name}</span>
-                <span className="text-sm font-semibold text-indigo-600 bg-indigo-100 px-3 py-1 rounded-full">{job.status}</span>
+            <Card key={job.id} className="overflow-hidden border border-slate-100 shadow-xl shadow-slate-200/40 rounded-[2rem] hover:shadow-2xl hover:-translate-y-1 transition-all bg-white flex flex-col">
+              <div className="px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+                <span className="font-bold text-slate-900 text-xl tracking-tight">{job.service?.name}</span>
+                <span className="text-[10px] font-bold text-white bg-black px-4 py-2 rounded-full uppercase tracking-widest">{job.status.replace(/_/g, ' ')}</span>
               </div>
-              <CardContent className="p-6 space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500 text-xl">
+              <CardContent className="p-8 space-y-8 flex-1 flex flex-col">
+                <div className="flex items-center gap-5">
+                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center font-bold text-slate-900 text-xl shadow-sm border border-slate-100 shrink-0">
                     {job.user?.name?.[0] || 'C'}
                   </div>
                   <div>
-                    <p className="font-semibold">{job.user?.name || 'Customer'}</p>
-                    <p className="text-sm text-slate-500">{new Date(job.date).toLocaleDateString()} at {job.timeSlot}</p>
+                    <p className="font-bold text-slate-900 text-lg">{job.user?.name || 'Customer'}</p>
+                    <p className="text-xs font-bold text-slate-400 mt-1 uppercase tracking-wider">{new Date(job.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} • {job.timeSlot}</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-2 text-sm text-slate-600 bg-slate-50 p-3 rounded-lg">
-                  <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-slate-400" />
-                  <span className="line-clamp-2">{job.address}</span>
+                <div className="flex items-start gap-4 text-sm font-medium text-slate-600 bg-slate-50 p-5 rounded-2xl border border-slate-100 flex-1">
+                  <MapPin className="w-5 h-5 shrink-0 text-black" />
+                  <span className="line-clamp-3 leading-relaxed">{job.address}</span>
                 </div>
 
                 <Button 
-                  className="w-full font-bold mt-2" 
+                  className="w-full h-14 rounded-full font-bold text-base bg-black text-white hover:bg-slate-800 shadow-lg shadow-black/10 transition-all mt-auto" 
                   onClick={() => router.push(`/professional/jobs/${job.id}`)}
                 >
                   Manage Job

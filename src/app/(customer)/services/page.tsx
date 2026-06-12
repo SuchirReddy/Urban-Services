@@ -102,35 +102,48 @@ function ServicesContent() {
   if (loading) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-20 flex justify-center items-center min-h-[50vh]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black"></div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 flex flex-col md:flex-row gap-8">
-      {/* Sidebar Filters */}
-      <aside className="w-full md:w-64 shrink-0 space-y-8">
-        <div>
-          <h3 className="font-bold text-lg mb-4">Search</h3>
-          <form onSubmit={handleSearchSubmit} className="relative">
-            <Input 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search services..." 
-              className="pl-9"
+    <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col gap-8">
+      {/* Top Filters Bar */}
+      <div className="w-full bg-white border border-slate-100 rounded-3xl p-6 shadow-sm flex flex-col gap-6">
+        <div className="flex flex-col md:flex-row items-center gap-8">
+          <div className="w-full md:w-1/2">
+            <form onSubmit={handleSearchSubmit} className="relative group">
+              <Input 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search services..." 
+                className="h-12 pl-12 rounded-full bg-slate-50 border-transparent hover:border-slate-200 focus-visible:ring-1 focus-visible:ring-black focus-visible:bg-white transition-all shadow-sm text-base font-medium"
+              />
+              <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-black transition-colors" />
+              <button type="submit" className="hidden">Submit</button>
+            </form>
+          </div>
+          
+          <div className="w-full md:w-1/3">
+            <div className="flex items-center justify-between mb-2 px-2">
+              <span className="text-sm font-bold text-slate-700">Max Price</span>
+              <span className="text-sm font-bold text-slate-900 bg-slate-100 px-3 py-1 rounded-full">₹{priceRange[0]}</span>
+            </div>
+            <Slider 
+              value={priceRange} 
+              onValueChange={(val: any) => setPriceRange(Array.isArray(val) ? val : [val])} 
+              max={maxPrice} 
+              step={100} 
             />
-            <Search className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
-            <button type="submit" className="hidden">Submit</button>
-          </form>
+          </div>
         </div>
 
-        <div>
-          <h3 className="font-bold text-lg mb-4">Categories</h3>
-          <div className="flex flex-col gap-2">
+        <div className="pt-2 border-t border-slate-100">
+          <div className="flex overflow-x-auto gap-3 pt-4 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
             <button
               onClick={() => updateFilters(searchQuery, 'All')}
-              className={`text-left px-3 py-2 rounded-lg text-sm transition-colors ${selectedCategory === 'All' ? 'bg-indigo-50 text-indigo-700 font-medium' : 'hover:bg-slate-50 text-slate-600'}`}
+              className={`shrink-0 px-6 py-2.5 rounded-full text-sm font-bold transition-all border ${selectedCategory === 'All' ? 'bg-black text-white border-black shadow-md' : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50 hover:text-black'}`}
             >
               All Categories
             </button>
@@ -138,28 +151,17 @@ function ServicesContent() {
               <button
                 key={cat}
                 onClick={() => updateFilters(searchQuery, cat)}
-                className={`text-left px-3 py-2 rounded-lg text-sm transition-colors ${selectedCategory === cat ? 'bg-indigo-50 text-indigo-700 font-medium' : 'hover:bg-slate-50 text-slate-600'}`}
+                className={`shrink-0 px-6 py-2.5 rounded-full text-sm font-bold transition-all border ${selectedCategory === cat ? 'bg-black text-white border-black shadow-md' : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50 hover:text-black'}`}
               >
                 {cat}
               </button>
             ))}
           </div>
         </div>
-
-        <div>
-          <h3 className="font-bold text-lg mb-4">Max Price: ₹{priceRange[0]}</h3>
-          <Slider 
-            value={priceRange} 
-            onValueChange={(val: any) => setPriceRange(Array.isArray(val) ? val : [val])} 
-            max={maxPrice} 
-            step={100} 
-            className="py-4"
-          />
-        </div>
-      </aside>
+      </div>
 
       {/* Main Content */}
-      <main className="flex-1">
+      <main className="w-full">
         <div className="mb-8">
           <h1 className="text-3xl font-bold">
             {selectedCategory === 'All' ? 'All Services' : `${selectedCategory} Services`}
@@ -181,7 +183,11 @@ function ServicesContent() {
         ) : (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {filteredServices.map(service => (
-              <Card key={service.id} className="overflow-hidden hover:shadow-xl transition-shadow group flex flex-col rounded-2xl md:rounded-xl">
+              <Card 
+                key={service.id} 
+                className="overflow-hidden hover:shadow-xl transition-shadow group flex flex-col rounded-2xl md:rounded-xl cursor-pointer"
+                onClick={() => handleBookNow(service.id)}
+              >
                 <div className="relative h-32 md:h-48 shrink-0">
                   <Image 
                     src={service.imageUrl} 

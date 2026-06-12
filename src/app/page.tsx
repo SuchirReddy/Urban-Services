@@ -4,7 +4,6 @@ import HomePageClient from '@/components/HomePageClient';
 export default async function Home() {
   const [servicesData, professionals, categoriesData] = await Promise.all([
     prisma.service.findMany({
-      take: 6,
       include: {
         bookings: { include: { review: true } }
       }
