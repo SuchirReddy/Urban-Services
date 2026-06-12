@@ -16,7 +16,7 @@ async function main() {
   const cleaning2 = await prisma.service.create({ data: { name: 'Bathroom Cleaning', category: 'Cleaning', description: 'Deep bathroom cleaning', price: 499, duration: 60, imageUrl: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop' } });
   
   const plumbing1 = await prisma.service.create({ data: { name: 'Tap Repair', category: 'Plumbing', description: 'Fix leaking taps', price: 299, duration: 30, imageUrl: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=2070&auto=format&fit=crop' } });
-  const plumbing2 = await prisma.service.create({ data: { name: 'Pipe Installation', category: 'Plumbing', description: 'New pipe setup', price: 999, duration: 120, imageUrl: 'https://images.unsplash.com/photo-1607400201889-565314e0046b?q=80&w=2070&auto=format&fit=crop' } });
+  const plumbing2 = await prisma.service.create({ data: { name: 'Pipe Installation', category: 'Plumbing', description: 'New pipe setup', price: 999, duration: 120, imageUrl: '/pipe_installation.png' } });
   
   const beauty1 = await prisma.service.create({ data: { name: 'Haircut for Men', category: 'Beauty', description: 'Stylish haircut', price: 249, duration: 30, imageUrl: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=2070&auto=format&fit=crop' } });
   const beauty2 = await prisma.service.create({ data: { name: 'Facial & Cleanup', category: 'Beauty', description: 'Glow facial package', price: 899, duration: 60, imageUrl: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070&auto=format&fit=crop' } });
