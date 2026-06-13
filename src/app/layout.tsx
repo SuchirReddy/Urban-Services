@@ -7,6 +7,7 @@ import { Toaster } from 'sonner';
 import { DemoRoleProvider } from '@/contexts/DemoRoleContext';
 import AppHeader from '@/components/AppHeader';
 import MobileNav from '@/components/MobileNav';
+import SplashScreen from '@/components/SplashScreen';
 
 const poppins = Poppins({
   weight: ['400', '500', '600', '700'],
@@ -30,6 +31,7 @@ export default function RootLayout({
         className={`${poppins.variable} font-sans antialiased min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-24 md:pb-0`}
       >
         <DemoRoleProvider>
+          <SplashScreen />
           <AppHeader />
           <MobileNav />
 
