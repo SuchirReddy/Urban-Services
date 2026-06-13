@@ -62,8 +62,8 @@ export default function RootLayout({
               <div>
                 <h4 className="font-bold text-white mb-4">Professionals</h4>
                 <ul className="space-y-2 text-sm text-slate-400">
-                  <li><Link href="#" className="hover:text-white transition-colors">Join as a Pro</Link></li>
-                  <li><Link href="#" className="hover:text-white transition-colors">Pro Guidelines</Link></li>
+                  <li><Link href="#" className="hover:text-white transition-colors">Join as a Professional</Link></li>
+                  <li><Link href="#" className="hover:text-white transition-colors">Professional Guidelines</Link></li>
                   <li><Link href="#" className="hover:text-white transition-colors">Success Stories</Link></li>
                 </ul>
               </div>
