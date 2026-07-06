@@ -1,7 +1,7 @@
 'use client';
 
 
-import { Search, Star, Clock, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
+import { Search, Star, Clock, ArrowRight, ShieldCheck, Zap, Sparkles, Droplets, Scissors, Wrench, Paintbrush, Hammer } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { useDemoRole } from '@/contexts/DemoRoleContext';
@@ -88,17 +88,21 @@ export default function HomePageClient({ services, professionals, categories }: 
               placeholder="What do you need help with?"
               className="flex-1 min-w-0 bg-transparent border-none outline-none text-black placeholder-slate-500 font-medium md:font-bold text-sm md:text-lg py-2 md:py-3"
             />
-            <button type="submit" className="bg-black text-white px-5 md:px-8 py-2 md:py-3 rounded-full font-bold text-sm md:text-base hover:bg-slate-800 transition-all shadow-md hover:shadow-lg whitespace-nowrap">
-              Search
+            <button type="submit" className="relative overflow-hidden group/btn bg-slate-50/50 backdrop-blur-xl px-5 md:px-8 py-2 md:py-3 rounded-full text-slate-800 font-bold text-sm md:text-base shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] hover:bg-slate-50/60 whitespace-nowrap">
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+              <span className="relative z-10">Search</span>
             </button>
           </form>
         </div>
       </section>
 
       <section className="max-w-6xl mx-auto px-4 mt-28 pb-12 relative z-20 hidden md:flex items-center justify-center gap-6">
-        <div className="bg-white/90 backdrop-blur-xl rounded-full shadow-xl shadow-slate-200/50 p-2 pr-8 flex items-center gap-4 border border-slate-200/60 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
-          <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center text-white shadow-md">
-            <ShieldCheck className="w-6 h-6" />
+        <div className="group bg-white/90 backdrop-blur-xl rounded-full shadow-xl shadow-slate-200/50 p-2 pr-8 flex items-center gap-4 border border-slate-200/60 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+          <div className="w-14 h-14 bg-slate-50/50 backdrop-blur-xl rounded-full flex items-center justify-center text-slate-800 shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 relative overflow-hidden group-hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] transition-all">
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+            <div className="relative z-10">
+              <ShieldCheck className="w-6 h-6" />
+            </div>
           </div>
           <div>
             <h4 className="font-bold text-slate-900 text-sm tracking-wide uppercase">Verified Pros</h4>
@@ -106,9 +110,12 @@ export default function HomePageClient({ services, professionals, categories }: 
           </div>
         </div>
 
-        <div className="bg-white/90 backdrop-blur-xl rounded-full shadow-xl shadow-slate-200/50 p-2 pr-8 flex items-center gap-4 border border-slate-200/60 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
-          <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center text-white shadow-md">
-            <Star className="w-6 h-6 fill-current" />
+        <div className="group bg-white/90 backdrop-blur-xl rounded-full shadow-xl shadow-slate-200/50 p-2 pr-8 flex items-center gap-4 border border-slate-200/60 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+          <div className="w-14 h-14 bg-slate-50/50 backdrop-blur-xl rounded-full flex items-center justify-center text-slate-800 shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 relative overflow-hidden group-hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] transition-all">
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+            <div className="relative z-10">
+              <Star className="w-6 h-6 fill-current" />
+            </div>
           </div>
           <div>
             <h4 className="font-bold text-slate-900 text-sm tracking-wide uppercase">Top Quality</h4>
@@ -116,9 +123,12 @@ export default function HomePageClient({ services, professionals, categories }: 
           </div>
         </div>
 
-        <div className="bg-white/90 backdrop-blur-xl rounded-full shadow-xl shadow-slate-200/50 p-2 pr-8 flex items-center gap-4 border border-slate-200/60 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
-          <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center text-white shadow-md">
-            <Zap className="w-6 h-6 fill-current" />
+        <div className="group bg-white/90 backdrop-blur-xl rounded-full shadow-xl shadow-slate-200/50 p-2 pr-8 flex items-center gap-4 border border-slate-200/60 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+          <div className="w-14 h-14 bg-slate-50/50 backdrop-blur-xl rounded-full flex items-center justify-center text-slate-800 shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 relative overflow-hidden group-hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] transition-all">
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+            <div className="relative z-10">
+              <Zap className="w-6 h-6 fill-current" />
+            </div>
           </div>
           <div>
             <h4 className="font-bold text-slate-900 text-sm tracking-wide uppercase">Instant Booking</h4>
@@ -141,8 +151,18 @@ export default function HomePageClient({ services, professionals, categories }: 
                 onClick={() => router.push(`/services?category=${encodeURIComponent(category)}`)}
                 className="w-36 md:w-48 shrink-0 bg-white border border-slate-100 rounded-2xl md:rounded-[2rem] p-6 md:p-8 flex flex-col items-center justify-center gap-3 md:gap-4 cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all"
               >
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-black rounded-full flex items-center justify-center text-white text-xl md:text-2xl font-bold shadow-md">
-                  {category.charAt(0)}
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-slate-50/50 backdrop-blur-xl rounded-full flex items-center justify-center text-slate-800 text-xl md:text-2xl font-bold shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 relative overflow-hidden group-hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] transition-all">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+                  <div className="relative z-10">
+                    {category === 'Cleaning' ? <Sparkles className="w-6 h-6 md:w-8 md:h-8" /> :
+                     category === 'Plumbing' ? <Droplets className="w-6 h-6 md:w-8 md:h-8" /> :
+                     category === 'Beauty' ? <Scissors className="w-6 h-6 md:w-8 md:h-8" /> :
+                     category === 'Appliance Repair' ? <Wrench className="w-6 h-6 md:w-8 md:h-8" /> :
+                     category === 'Electrician' ? <Zap className="w-6 h-6 md:w-8 md:h-8" /> :
+                     category === 'Painting' ? <Paintbrush className="w-6 h-6 md:w-8 md:h-8" /> :
+                     category === 'Carpentry' ? <Hammer className="w-6 h-6 md:w-8 md:h-8" /> :
+                     category.charAt(0)}
+                  </div>
                 </div>
                 <span className="font-semibold text-slate-800 text-sm md:text-base text-center whitespace-nowrap">{category}</span>
               </div>
@@ -167,9 +187,10 @@ export default function HomePageClient({ services, professionals, categories }: 
                   </div>
                   <button
                     onClick={() => router.push(`/services?category=${encodeURIComponent(category)}`)}
-                    className="hidden md:flex items-center gap-2 text-slate-900 font-bold hover:text-black transition-colors"
+                    className="hidden md:flex relative overflow-hidden group/btn bg-slate-50/50 backdrop-blur-xl px-6 py-2.5 rounded-full text-slate-800 font-bold shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] hover:bg-slate-50/60"
                   >
-                    View all {category.toLowerCase()} <ArrowRight className="w-4 h-4" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+                    <span className="relative z-10 flex items-center gap-2">View all {category.toLowerCase()} <ArrowRight className="w-4 h-4" /></span>
                   </button>
                 </div>
 
@@ -207,12 +228,13 @@ export default function HomePageClient({ services, professionals, categories }: 
                             <Clock className="w-3 h-3 md:w-4 md:h-4" />
                             {service.duration} mins
                           </div>
-                          <Button
-                            className="w-full md:w-auto h-8 md:h-10 text-xs md:text-sm rounded-full bg-black hover:bg-slate-800 text-white font-semibold px-3 md:px-4"
+                          <button
+                            className="relative overflow-hidden group/btn w-full md:w-auto h-8 md:h-10 rounded-full bg-slate-50/50 backdrop-blur-xl text-slate-800 font-bold shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] hover:bg-slate-50/60 px-3 md:px-4"
                             onClick={() => router.push(`/services/${service.id}`)}
                           >
-                            Book Now
-                          </Button>
+                            <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+                            <span className="relative z-10 flex items-center justify-center h-full w-full text-xs md:text-sm">Book Now</span>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -228,8 +250,9 @@ export default function HomePageClient({ services, professionals, categories }: 
                       <span className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase mb-4">Urbio Exclusive</span>
                       <h3 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">The Black Card.</h3>
                       <p className="text-slate-400 max-w-md text-lg mb-8 leading-relaxed font-light">Elevate your home. Enjoy 20% off all bookings, priority luxury support, and a dedicated team of master professionals.</p>
-                      <button className="bg-white text-black px-10 py-4 rounded-full font-bold text-sm tracking-wide hover:bg-slate-200 transition-all shadow-xl hover:-translate-y-0.5">
-                        EXPLORE BENEFITS
+                      <button className="relative overflow-hidden group/btn bg-slate-50/50 backdrop-blur-xl px-10 py-4 rounded-full text-slate-800 font-bold text-sm tracking-wide shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] hover:bg-slate-50/60">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+                        <span className="relative z-10">EXPLORE BENEFITS</span>
                       </button>
                     </div>
 
@@ -261,8 +284,9 @@ export default function HomePageClient({ services, professionals, categories }: 
                       <span className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase mb-4">Signature Add-on</span>
                       <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">Immaculate Detail.</h3>
                       <p className="text-slate-500 max-w-md text-lg mb-8 leading-relaxed font-light">Add our comprehensive white-glove inspection to any deep cleaning service. Perfection, guaranteed.</p>
-                      <button className="bg-black text-white px-10 py-4 rounded-full font-bold text-sm tracking-wide hover:bg-slate-800 transition-all shadow-xl shadow-black/10 hover:-translate-y-0.5">
-                        CLAIM OFFER
+                      <button className="relative overflow-hidden group/btn bg-slate-50/50 backdrop-blur-xl px-10 py-4 rounded-full text-slate-800 font-bold text-sm tracking-wide shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] hover:bg-slate-50/60">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+                        <span className="relative z-10">CLAIM OFFER</span>
                       </button>
                     </div>
                   </div>
@@ -276,8 +300,9 @@ export default function HomePageClient({ services, professionals, categories }: 
                       <span className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase mb-4">Smart Home</span>
                       <h3 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">The Future is Here.</h3>
                       <p className="text-slate-400 max-w-md text-lg mb-8 leading-relaxed font-light">Upgrade your space with intelligent lighting, climate control, and security systems. Installed by our master electricians.</p>
-                      <button className="bg-white text-black px-10 py-4 rounded-full font-bold text-sm tracking-wide hover:bg-slate-200 transition-all shadow-xl hover:-translate-y-0.5">
-                        DISCOVER UPGRADES
+                      <button className="relative overflow-hidden group/btn bg-slate-50/50 backdrop-blur-xl px-10 py-4 rounded-full text-slate-800 font-bold text-sm tracking-wide shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] hover:bg-slate-50/60">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+                        <span className="relative z-10">DISCOVER UPGRADES</span>
                       </button>
                     </div>
 
@@ -309,8 +334,9 @@ export default function HomePageClient({ services, professionals, categories }: 
                       <span className="text-[10px] font-bold text-amber-500/80 tracking-[0.2em] uppercase mb-4">Master Craftsmanship</span>
                       <h3 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Bespoke Woodwork.</h3>
                       <p className="text-amber-100/70 max-w-md text-lg mb-8 leading-relaxed font-light">Custom shelving, luxury home libraries, and premium furniture repair. Designed and crafted by elite artisans.</p>
-                      <button className="bg-white text-[#2A1B12] px-10 py-4 rounded-full font-bold text-sm tracking-wide hover:bg-amber-50 transition-all shadow-xl hover:-translate-y-0.5">
-                        BOOK A CRAFTSMAN
+                      <button className="relative overflow-hidden group/btn bg-slate-50/50 backdrop-blur-xl px-10 py-4 rounded-full text-slate-800 font-bold text-sm tracking-wide shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] hover:bg-slate-50/60">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+                        <span className="relative z-10">BOOK A CRAFTSMAN</span>
                       </button>
                     </div>
                   </div>
@@ -365,9 +391,10 @@ export default function HomePageClient({ services, professionals, categories }: 
                   </div>
                   <button
                     onClick={() => router.push(`/services?category=${encodeURIComponent(category)}`)}
-                    className="hidden md:flex items-center gap-2 text-slate-900 font-bold hover:text-black transition-colors"
+                    className="hidden md:flex relative overflow-hidden group/btn bg-slate-50/50 backdrop-blur-xl px-6 py-2.5 rounded-full text-slate-800 font-bold shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] hover:bg-slate-50/60"
                   >
-                    View all {category.toLowerCase()} <ArrowRight className="w-4 h-4" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+                    <span className="relative z-10 flex items-center gap-2">View all {category.toLowerCase()} <ArrowRight className="w-4 h-4" /></span>
                   </button>
                 </div>
 
@@ -405,12 +432,13 @@ export default function HomePageClient({ services, professionals, categories }: 
                             <Clock className="w-3 h-3 md:w-4 md:h-4" />
                             {service.duration} mins
                           </div>
-                          <Button
-                            className="w-full md:w-auto h-8 md:h-10 text-xs md:text-sm rounded-full bg-black hover:bg-slate-800 text-white font-semibold px-3 md:px-4"
+                          <button
+                            className="relative overflow-hidden group/btn w-full md:w-auto h-8 md:h-10 rounded-full bg-slate-50/50 backdrop-blur-xl text-slate-800 font-bold shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] hover:bg-slate-50/60 px-3 md:px-4"
                             onClick={() => router.push(`/services/${service.id}`)}
                           >
-                            Book Now
-                          </Button>
+                            <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+                            <span className="relative z-10 flex items-center justify-center h-full w-full text-xs md:text-sm">Book Now</span>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -424,8 +452,9 @@ export default function HomePageClient({ services, professionals, categories }: 
                     <span className="text-[10px] font-bold text-emerald-400 tracking-[0.2em] uppercase mb-4">Color & Character</span>
                     <h3 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Master Painters.</h3>
                     <p className="text-emerald-100/80 max-w-md text-lg mb-8 leading-relaxed font-light">Transform your space with premium paints and master craftsmen. From single accent walls to full-home luxury makeovers.</p>
-                    <button className="bg-white text-[#1A2E26] px-10 py-4 rounded-full font-bold text-sm tracking-wide hover:bg-slate-200 transition-all shadow-xl hover:-translate-y-0.5">
-                      GET A QUOTE
+                    <button className="relative overflow-hidden group/btn bg-slate-50/50 backdrop-blur-xl px-10 py-4 rounded-full text-slate-800 font-bold text-sm tracking-wide shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] hover:bg-slate-50/60">
+                      <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+                      <span className="relative z-10">GET A QUOTE</span>
                     </button>
                   </div>
 
@@ -453,9 +482,10 @@ export default function HomePageClient({ services, professionals, categories }: 
             Join thousands of happy customers who trust Urbio for their home needs. Verified professionals, guaranteed quality, zero hassle.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button className="bg-white text-black hover:bg-slate-100 rounded-full h-14 px-8 text-lg font-bold shadow-xl shadow-white/10 w-full sm:w-auto transition-transform hover:scale-105" onClick={() => router.push('/services')}>
-              Book Your First Service
-            </Button>
+            <button className="relative overflow-hidden group/btn bg-slate-50/50 backdrop-blur-xl rounded-full h-14 px-8 text-slate-800 text-lg font-bold shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 w-full sm:w-auto transition-all hover:-translate-y-1 hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.15)] hover:bg-slate-50/60" onClick={() => router.push('/services')}>
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+              <span className="relative z-10 flex items-center justify-center h-full w-full">Book Your First Service</span>
+            </button>
           </div>
         </div>
       </section>

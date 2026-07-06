@@ -183,9 +183,13 @@ export default function ServiceDetailPage() {
                 <span className="font-bold text-3xl text-black tracking-tighter">₹{calculateTotal()}</span>
               </div>
 
-              <Button onClick={handleProceed} size="lg" className="w-full text-base font-bold rounded-full h-14 bg-black text-white hover:bg-slate-800 transition-all hover:shadow-xl hover:shadow-slate-200 hover:-translate-y-0.5">
-                Proceed to Book
-              </Button>
+              <button 
+                onClick={handleProceed} 
+                className="relative overflow-hidden group/btn bg-slate-50/50 backdrop-blur-xl rounded-full h-14 w-full text-slate-800 text-lg font-bold shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] border border-white/80 ring-1 ring-slate-900/5 transition-all hover:-translate-y-1 hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.15)] hover:bg-slate-50/60"
+              >
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-white/10 to-transparent pointer-events-none" />
+                <span className="relative z-10 flex items-center justify-center h-full w-full">Proceed to Book</span>
+              </button>
             </CardContent>
           </Card>
         </div>
