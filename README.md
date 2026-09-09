@@ -133,5 +133,5 @@ Urbio Services leverages modern web technologies to deliver a scalable and respo
 ---
 
 <div align="center">
-  <sub>Built with ❤️ for modern home services.</sub>
+  <sub>Built with ❤️ for modern home services by Suchir Reddy.</sub>
 </div>
